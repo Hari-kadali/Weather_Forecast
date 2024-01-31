@@ -10,7 +10,7 @@ async function getWeather() {
   
     try {
         const response = await fetch(apiUrl);
-        // Check if the response status is not OK (e.g., 404 Not Found)
+        // Checking if the response status is not OK (e.g., 404 Not Found)
         if (!response.ok) {
         throw new Error('City not found. Please enter a valid city name.');
      }
@@ -20,7 +20,7 @@ async function getWeather() {
         // Assuming the structure of OpenWeatherMap response
         const forecastList = data.list;
     
-        // Clear previous forecast data
+        
         const forecastContainer = document.getElementById('forecast-list');
         forecastContainer.innerHTML = '';
     
@@ -32,10 +32,10 @@ async function getWeather() {
           const description = forecast.weather[0].description;
           const iconCode = forecast.weather[0].icon;
     
-          // Construct the icon URL using OpenWeatherMap's icon set
+          // Constructing the icon URL using OpenWeatherMap's icon set
           const iconUrl = `http://openweathermap.org/img/wn/${iconCode}.png`;
     
-          // Create elements to display forecast data with styles and icon
+          // Creating elements to display forecast data with styles and icon
           const forecastItem = document.createElement('div');
           forecastItem.style.backgroundColor = 'rgb(0 165 255)';  // Background color
           forecastItem.style.padding = 'auto';  // Padding
@@ -48,7 +48,7 @@ async function getWeather() {
             <img src="${iconUrl}" alt="${description}" style="width: 50px; height: 50px;">
           `;
     
-          // Append forecast item to the container
+          // Appending forecast item to the container
           forecastContainer.appendChild(forecastItem);
         }
     
@@ -56,7 +56,7 @@ async function getWeather() {
     catch (error) {
         console.error('Error fetching data:', error);
 
-     // Display the error message
+     // Displaying the error message
     const errorMessage = document.getElementById('error-message');
     errorMessage.innerText = error.message;
     }
